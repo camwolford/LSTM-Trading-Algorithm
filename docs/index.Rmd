@@ -1,7 +1,4 @@
 ---
-title: "LSTM Daily Strategy"
-author: "Campbell Wolford"
-date: "2023-10-04"
 output: html_document
 ---
 
@@ -1670,7 +1667,7 @@ Adding to its metrics, the strategy maintained a beta close to 0, aligning with 
 During the time period tested the LSTM neural network was trained 5 different times and a total of 20 predictions were made.
 
 | **Cycle** | **RFE Validation Accuracy** | **Sum of PCA Explained Variance** | **Number of Epochs** | **Best Validation Loss** | **Training Accuracy** | **Testing Accuracy** | **Prediction Binary Accuracy** |
-|-----------|-----------------------------|-----------------------------------|----------------------|--------------------------|-----------------------|----------------------|--------------------------------|
+|---------|---------|---------|---------|---------|---------|---------|---------|
 | 1         | 0.69                        | 0.5748                            | 181                  | 0.3631                   | 0.8545                | 0.806                | 0.6                            |
 | 2         | 0.93                        | 0.5407                            | 105                  | 0.4747                   | 0.793                 | 0.758                | 0.566                          |
 | 3         | 0.67                        | 0.5825                            | 500                  | 0.316                    | 0.8596                | 0.592                | 0.5878                         |
