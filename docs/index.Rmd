@@ -26,8 +26,7 @@ This process of feature engineering, RFE, and PCA ensures that the algorithm is 
 
 **Modular Architecture:**
 
-![Algorithm Architecture](camwolford.github.io/docs/assets/LSTM-architecture.jpeg)
-
+![](assets/img/LSTM-architecture.jpeg)
 
 **Benefits of this Code Include:**
 
@@ -1651,11 +1650,11 @@ class rebalance_func:
 
 The results of the trading strategy for the month of January 2023 are as follows (the one month time frame was chosen due to the computational limits of the quantconnect backtesting environment):
 
-![Strategy Chart](camwolford.github.io/docs/assets/Strategy Chart.png)
+![](assets/img/Strategy-Chart.png)
 
-![Strategy Drawdown](camwolford.github.io/docs/assets/Strategy Drawdown.png)
+![](assets/img/Strategy-Drawdown.png)
 
-![Strategy Stats](camwolford.github.io/docs/assets/Strategy Stats.png)
+![](assets/img/Strategy-Stats.png)
 
 The statistical results of this implementation of the algorithm as shown below:
 
