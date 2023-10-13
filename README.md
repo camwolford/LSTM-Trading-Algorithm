@@ -2,7 +2,7 @@
 
 ## **Introduction:**
 
-This algorithmic trading strategy uses time-series data and advanced deep learning techniques, employing a PyTorch-based long short-term memory (LSTM) neural network. Designed for implementation on QuantConnect's online backtesting platform, the strategy incorporates predictive modeling, dynamic stock selection, a rebalancing mechanism, and automated trading decisions.
+This algorithmic trading strategy uses time-series data and advanced deep learning techniques, employing a PyTorch-based long short-term memory (LSTM) neural network. Designed for implementation on [QuantConnect's online backtesting platform](https://www.quantconnect.com/), the strategy incorporates predictive modeling, dynamic stock selection, a rebalancing mechanism, and automated trading decisions.
 
 **Strategy Overview:**
 
