@@ -32,6 +32,8 @@ This process of feature engineering, RFE, and PCA ensures that the algorithm is 
 
 -   Parameter Flexibility: Offering parameter customization, users can adjust the number of stocks, weights, and hyper-parameters to tailor the strategy to their specific goals.
 
+If you would like to skip the in-depth explanation of the modules and code using in this algorithm click here.
+
 ### Module 1:
 
 This is the main module of the strategy. It controls various aspects of the strategy that can be edited to optimize performance and risk. The algorithm executes as follows: At the start of each week the LSTM model is trained on time-series data of daily values from various technical indicators of the selected universe of stocks (weekly training is used in this implementation due to computational constraints). The data the model is trained on first is reduced to only include a certain number of these technical indicators through Recursive Feature Elimination (RFE) before the dimentionality of the data is reduced through Principle Component Analysis (PCA). Then the model predicts the next day's return in terms of binary classification (1 for a positive return and 0 for a negative return). The algorithm then selects a specific number of the predicted stocks with the most likely positive/negative returns to go long/short with. The model is saved for predicting throughout the rest of the week before being retrained at the start of the next week.
