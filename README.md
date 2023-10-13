@@ -16,7 +16,7 @@ To further refine the data set and mitigate the curse of dimensionality, Princip
 
 This process of feature engineering, RFE, and PCA ensures that the algorithm is trained on a highly informative data set, providing an effective learning process for the subsequent LSTM neural network. This preparation, coupled with advanced stock selection methods and systematic rebalancing, positions the algorithm to operate autonomously with agility in dynamic market conditions.
 
-**Modular Architecture:**
+**Modular Architecture: (Click on any image to see it full screen)**
 
 ![](assets/img/LSTM-architecture.jpeg)
 
