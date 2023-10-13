@@ -1,11 +1,3 @@
----
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # **Long Short-Term Memory Neural Network Daily Trading Strategy**
 
 ## **Introduction:**
