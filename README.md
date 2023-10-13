@@ -32,7 +32,7 @@ This process of feature engineering, RFE, and PCA ensures that the algorithm is 
 
 -   Parameter Flexibility: Offering parameter customization, users can adjust the number of stocks, weights, and hyper-parameters to tailor the strategy to their specific goals.
 
-If you would like to skip the in-depth explanation of the modules and code using in this algorithm click [here] (https://github.com/camwolford/camwolford.github.io/blob/main/README.md#results).
+## Click [here](https://github.com/camwolford/camwolford.github.io/blob/main/README.md#results) to skip the in-depth explanation of the modules and code used in this algorithm.
 
 ### Module 1:
 
