@@ -2,7 +2,7 @@
 
 ## **Introduction:**
 
-This algorithmic trading strategy uses time-series data and advanced deep learning techniques, employing a PyTorch-based long short-term memory (LSTM) neural network. Designed for implementation on [QuantConnect's online backtesting platform](https://www.quantconnect.com/), the strategy incorporates predictive modeling, dynamic stock selection, a rebalancing mechanism, and automated trading decisions.
+This algorithmic trading strategy uses time-series data and advanced machine learning techniques, employing a PyTorch-based long short-term memory (LSTM) neural network. Designed for implementation on [QuantConnect's online backtesting platform](https://www.quantconnect.com/), the strategy incorporates predictive modeling, dynamic stock selection, a rebalancing mechanism, and automated trading decisions.
 
 **Strategy Overview:**
 
@@ -271,7 +271,7 @@ This module encapsulates the training process of the neural network, incorporati
 
 Libraries:
 
--   torch: PyTorch, a powerful deep learning library.
+-   torch: PyTorch, a powerful machine learning library.
 
 -   datetime.timedelta: Represents the duration between two dates and times.
 
@@ -422,7 +422,7 @@ class nn_training_class:
             self.symbols.remove(symbol)
 
         # Feature Selection
-        # this is done using the data from 2 days ago as per the 'Short-term stock market price           trend prediction using a comprehensive deep learning system' paper
+        # this is done using the data from 2 days ago as per the 'Short-term stock market price           trend prediction using a comprehensive machine learning system' paper
         x_rfe_train = np.concatenate([indicator_df[symbol].values[-2:-1] for symbol in self.symbols], axis=0)
         y_rfe_train = np.concatenate([np.array(self.stock_returns[symbol][-1:]) for symbol in self.symbols], axis=0)
 
