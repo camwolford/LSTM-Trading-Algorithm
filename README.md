@@ -6,15 +6,15 @@ This algorithmic trading strategy uses time-series data and advanced machine lea
 
 **Strategy Overview:**
 
-The architecture of the strategy is built by 13 modules, initiating with data preprocessing and feature engineering. This initial phase lays the groundwork for subsequent modeling.
+The algorithm places an emphasis on temporal dependencies in stock price movements, which is performed by a Long Short-Term Memory (LSTM) neural network. The LSTM architecture excels in handling sequential data, making it well-suited for instances where past information may hold insights for predicting future trends, like the stock market. This neural network architecture, with its ability to retain and utilize historical context , contributes to the model's understanding of market dynamics and enhances its predictive capabilities.
 
-The algorithm places an emphasis on temporal dependencies in stock price movements, which is performed by a Long Short-Term Memory (LSTM) neural network. The LSTM architecture excels in handling sequential data, making it well-suited for instances where past information holds insights for predicting future trends, like the stock market. This neural network architecture, with its ability to retain and utilize historical context , contributes to the model's understanding of market dynamics and enhances its predictive capabilities.
+The incorporation of 91 widely recognized technical indicators during feature engineering ensures that the model is equipped with a data set of indicators commonly used by other traders and algorithms. The strategy then employs Recursive Feature Elimination (RFE) to discern the most impactful indicators, streamlining the data set for model training.
 
-The incorporation of 91 widely recognized technical indicators during feature engineering ensures that the model is equipped with a data set of indicators commonly used by other traders and algorithms. The strategy then employs Recursive Feature Elimination (RFE) to discern the most impactful variables, streamlining the data set for model training.
-
-To further refine the data set and mitigate the curse of dimensionality, Principal Component Analysis (PCA) is applied. The curse of dimensionality refers to the challenges and limitations that arise when dealing with data sets with a high number of features, where the volume of variables can lead to computational inefficiencies and reduced model performance. This dimensionality reduction technique helps distill the essence of the data, capturing the most significant variations while discarding redundant information.
+To further refine the data set and mitigate the curse of dimensionality, Principal Component Analysis (PCA) is applied. The curse of dimensionality refers to the challenges and limitations that arise when dealing with data sets with a high number of features, where the volume of variables can lead to computational inefficiencies and reduced model performance. This dimensionality reduction technique helps to capture the most significant variations while discarding redundant information.
 
 This process of feature engineering, RFE, and PCA ensures that the algorithm is trained on a highly informative data set, providing an effective learning process for the subsequent LSTM neural network. This preparation, coupled with advanced stock selection methods and systematic rebalancing, positions the algorithm to operate autonomously with agility in dynamic market conditions.
+
+The program architecture includes 13 modules, starting with data preprocessing and feature engineering. This initial phase lays the groundwork for subsequent modeling.
 
 **Modular Architecture: (Click on any image to see it full screen)**
 
@@ -36,11 +36,11 @@ This process of feature engineering, RFE, and PCA ensures that the algorithm is 
 
 ### Module 1:
 
-This is the main module of the strategy. It controls various aspects of the strategy that can be edited to optimize performance and risk. The algorithm executes as follows: At the start of each week the LSTM model is trained on time-series data of daily values from various technical indicators of the selected universe of stocks (weekly training is used in this implementation due to computational constraints). The data the model is trained on first is reduced to only include a certain number of these technical indicators through Recursive Feature Elimination (RFE) before the dimentionality of the data is reduced through Principle Component Analysis (PCA). Then the model predicts the next day's return in terms of binary classification (1 for a positive return and 0 for a negative return). The algorithm then selects a specific number of the predicted stocks with the most likely positive/negative returns to go long/short with. The model is saved for predicting throughout the rest of the week before being retrained at the start of the next week.
+This is the main module of the strategy. It controls various aspects of the strategy that can be edited to optimize performance and risk. The algorithm executes as follows: At the start of each week the LSTM model is trained on time-series data of daily values from various technical indicators of the selected universe of stocks (weekly training is used in this implementation due to computational constraints). The data the model is trained on first is reduced to only include a certain number of these technical indicators through Recursive Feature Elimination (RFE) before the dimensionality of the data is reduced through Principle Component Analysis (PCA). Then the model predicts the next day's return in terms of binary classification (1 for a positive return and 0 for a negative return). The algorithm then selects a specific number of the predicted stocks with the most likely positive/negative returns to go long/short with. The model is saved for predicting throughout the rest of the week before being retrained at the start of the next week.
 
 Note: In the following implementation of the algorithm, the final number of features for RFE to select was the same as the initial number of technical indicators for each stock (91), meaning that no RFE was done.
 
-Various parts of the algorithm can be eddied in this module:
+Various parts of the algorithm can be edited in this module:
 
 -   The number of stocks in the universe
 
@@ -295,7 +295,9 @@ Classes from Other Files:
 
 -   Model_Train_Test: Class for training and testing the LSTM model.
 
--   PCA: Class for principal component analysis. - IndicatorCalculator: Class for computing technical indicators.
+-   PCA: Class for principal component analysis.
+  
+-   IndicatorCalculator: Class for computing technical indicators.
 
 Initialization:
 
@@ -585,7 +587,7 @@ Libraries:
 
 -   dropna: A utility function from the ta.utils module to drop missing values from a dataframe.
 
--   pandas Library: The pandas library is imported as pd for DataFrame manipulation.
+-   pandas Library: The pandas library is imported for DataFrame manipulation.
 
 Initialization:
 
@@ -648,7 +650,7 @@ This module defines the Recursive_Feature_Selection class, which is responsible 
 
 Libraries:
 
--   sklearn Library: The most useful and robust library for machine learning in Python
+-   sklearn Library: A useful and robust library for machine learning in Python
 
 -   RFE: Recursive Feature Elimination, a feature selection method from the scikit-learn library.
 
@@ -746,11 +748,11 @@ class Recursive_Feature_Selection:
 
 ### Module 6: Min-Max Scaling Class
 
-This module defines the Min_Max class, responsible for performing min-max scaling on a given list of values. Real-world data sets contain features that are varying in degrees of magnitude, range, and units. Since machine learning models interpret these features on the same scale, feature scaling is necessary.
+This module defines the Min_Max class, responsible for performing min-max scaling on a given list of values. Real-world data sets contain features that vary in degrees of magnitude, range, and units. Since machine learning models interpret these features on the same scale, feature scaling is necessary.
 
 Libraries:
 
--   numpy Library: The numpy library is imported as np for numerical operations.
+-   numpy Library: The numpy library is imported for numerical operations.
 
 Initialization:
 
@@ -908,7 +910,7 @@ class PCA:
 
 ### Module 8: Training and Testing Neural Network Model
 
-This module defines the Model_Train_Test class, responsible for training and testing a neural network model. It utilizes sliding windows for model training as explained in the following module.
+This module defines the Model_Train_Test class, responsible for training and testing a neural network model. It utilizes sliding windows for model training as further explained in the next module.
 
 Libraries:
 
@@ -936,7 +938,9 @@ Parameters:
 
 -   num_layers: Number of layers in the neural network.
 
--   dropout_prob: Probability of dropout. - learning_rate: Learning rate for optimization.
+-   dropout_prob: Probability of dropout.
+  
+-   learning_rate: Learning rate for optimization.
 
 -   weight_decay: L2 penalty on the weights.
 
@@ -1126,7 +1130,7 @@ Functionality:
 
 Functionality:
 
--   Calculates the total number of sliding windows that can be generated.
+-   Calculates the total number of sliding windows that should be generated.
 
 #### Generate_Sliding_Windows Method:
 
@@ -1204,7 +1208,7 @@ Functionality:
 
 -   Layers include an LSTM layer, layer normalization, fully connected layer with ReLU activation, and an output layer with a sigmoid activation.
 
--   Weights are initialized using He initialization.
+-   Weights are initialized using He initialization. Weight initialization is used to define the initial values for the parameters in neural network models prior to training the models on a dataset.           Through a trial-and-error process He initialization was determined to be the best initialization method for model training.
 
 #### Forward Method:
 
@@ -1581,8 +1585,6 @@ Functionality:
 
 -   Adds equity symbols to the algorithm for both long and short positions.
 
--   
-
 -   For long positions:
 
     -   Retrieves historical data for long symbols.
@@ -1652,7 +1654,7 @@ The results of the trading strategy for the month of January 2023 are as follows
 
 The statistical results of this implementation of the algorithm as shown below:
 
-The strategy exhibited promising performance during the one-month backtest, generating a total profit of \$2,020.57 and achieving a monthly return of 2.021%. When annualized, this translates to a compounding annual return of 26.558% and a Sharpe ratio of 2.143. Throughout the backtest, the algorithm executed a total of 608 trades. The win rate was 54% (proportion of trades that made money), and the binary accuracy, determined by module 12, was 55% (proportion of correct predictions by the LSTM model). Discrepancies in these values may arise from gaps in stock prices, trade execution inefficiencies, and slippage.
+The strategy exhibited promising performance during this limited one month backtest, generating a total profit of \$2,020.57 and achieving a monthly return of 2.021%. When annualized, this translates to a compounding annual return of 26.558% and a Sharpe ratio of 2.143. Throughout the backtest, the algorithm executed a total of 608 trades. The win rate was 54% (proportion of trades that made money), and the binary accuracy, determined by module 12, was 55% (proportion of correct predictions by the LSTM model). Discrepancies in these values may arise from gaps in stock prices, trade execution inefficiencies, and slippage.
 
 Adding to its metrics, the strategy maintained a beta close to 0, aligning with the long/short strategy's intent, and an alpha of 0.15 indicating that for the time period the algorithm was profitable while taking a market neutral stance. To validate these results comprehensively, a more extensive backtest spanning diverse market conditions is necessary.
 
@@ -1680,7 +1682,7 @@ The strategy is bottled-necked by computational limits when it comes to scraping
 
 ## **Conclusion: Unlocking the Full Potential**
 
-This demonstrates just one avenue of deploying this trading strategy. However, it's crucial to recognize that the showcased implementation merely scratches the surface, and a wealth of optimization possibilities await exploration. Essential parameters, crucial for the strategy's efficacy, invite further fine-tuning. This opens the door to an iterative process, where adjustments and enhancements could potentially unlock even greater performance and robustness in varying market conditions.
+This demonstrates just one avenue of deploying this trading strategy. However, it's crucial to recognize that the showcased implementation merely scratches the surface, and a wealth of optimization possibilities await exploration. Essential parameters, crucial for the strategy's efficacy, invite further tuning. This opens the door to an iterative process, where adjustments and enhancements could potentially unlock even greater performance and robustness in varying market conditions. Of course, due care to avoid overfitting is critical
 
 **Potential Enhancements Include:**
 
@@ -1690,9 +1692,9 @@ This demonstrates just one avenue of deploying this trading strategy. However, i
 
 -   **Initial Weights of the LSTM Model:** The selection of weight initialization methods, such as Xavier initialization.
 
--   **Stock Consideration:** Depending on computational capabilities, the number of stocks considered can be adjusted to strike a balance between accuracy and efficiency. Without computational constraints this algorithm could make be trained on a larger set of stocks for potentially higher binary accuracy and could hold more stocks to increase the daily portfolio's diversity.
+-   **Stock Consideration:** Depending on computational capabilities, the number of stocks considered can be adjusted to strike a balance between accuracy and efficiency. Without computational constraints this algorithm could be trained on a larger set of stocks for potentially higher binary accuracy and could hold more stocks to increase the daily portfolio's diversity.
 
--   **Trade Execution Timing:** By selecting an optimal time to execute each trade the algorithm could leave less profits on the table and could bring the win rate much closer to the accuracy. A smaller time resolution (minute) price prediction algorithms to determine the entry and exit price for each stock.
+-   **Trade Execution Timing:** By selecting an optimal time to execute each trade the algorithm could leave less profits on the table and could bring the win rate much closer to the accuracy. For example, a smaller time resolution (minute) price prediction algorithm could be used alongside this algorithm to determine the optimal entry and exit price each day for each stock.
 
 -   **Long/Short Portfolio Configuration:** Tailoring the number and weighting of stocks in the long/short portfolio offers room for optimizing diversity and risk management.
 
